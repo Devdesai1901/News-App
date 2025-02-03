@@ -1,0 +1,33 @@
+name: Deploy Sphinx documentation to Pages
+
+on:
+  # Triggers deployment on push to the master branch
+  push:
+    branches: [main, fix/sphinx-docs-pipeline]
+
+jobs:
+  pages:
+    runs-on: ubuntu-20.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Sphinx and deploy to GitHub Pages using the sphinx-notes/pages action
+      - id: deployment
+        uses: sphinx-notes/pages@v3
+        with:
+          # Path to your documentation (change to your docs folder)
+          docs-folder: docs/
+          # Python dependencies to install, including any needed for building the documentation
+          extra-requirements: requirements.txt
+          requirements_path: requirements.txt
+          # Optional: include this if using a custom Sphinx config
+          sphinx-builder: html
