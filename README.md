@@ -57,7 +57,7 @@ NewsAI leverages state-of-the-art AI models and a modular data pipeline to help 
 # 🚀 Quick Start — One-Command Setup Script for NewsAI
 
 ### 1️⃣ Clone the repository
-git clone https://github.com/Multiverse-of-Projects/NewsAI.git
+git clone https://github.com/Devdesai1901/News-App.git
 cd NewsAI
 
 ### 2️⃣ Install dependencies
